@@ -1,0 +1,39 @@
+[package]
+name = "mote-mobile"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mote phone remote"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+eframe = { workspace = true, features = ["glow", "default_fonts", "android-native-activity"] }
+egui.workspace = true
+mote-core.workspace = true
+mote-ui.workspace = true
+
+[target.'cfg(target_os = "android")'.dependencies]
+winit = { version = "0.30.13", default-features = false, features = ["android-native-activity"] }
+
+[package.metadata.android]
+package = "net.mote.remote"
+build_targets = ["aarch64-linux-android", "x86_64-linux-android"]
+apk_name = "mote"
+resources = "android/res"
+
+[package.metadata.android.sdk]
+min_sdk_version = 26
+target_sdk_version = 34
+
+[[package.metadata.android.uses_permission]]
+name = "android.permission.INTERNET"
+
+[package.metadata.android.application]
+label = "Mote"
+icon = "@mipmap/ic_launcher"
+theme = "@style/MoteTheme"
+
+[package.metadata.android.application.activity]
+orientation = "portrait"

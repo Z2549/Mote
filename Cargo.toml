@@ -1,0 +1,17 @@
+[workspace]
+members = ["crates/core", "crates/ui", "crates/desktop", "crates/mobile"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+
+[workspace.dependencies]
+mote-core = { path = "crates/core" }
+mote-ui = { path = "crates/ui" }
+egui = "0.37"
+eframe = { version = "0.37", default-features = false }
+
+[profile.release]
+strip = true

@@ -1,0 +1,22 @@
+[package]
+name = "mote-desktop"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Mote PC receiver, Windows only"
+
+[dependencies]
+mote-core.workspace = true
+mote-ui.workspace = true
+
+[target.'cfg(target_os = "windows")'.dependencies]
+eframe = { workspace = true, features = ["glow", "default_fonts"] }
+windows = { version = "0.62", features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_System_LibraryLoader",
+    "Win32_System_Threading",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
